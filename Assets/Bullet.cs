@@ -28,4 +28,16 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    //当たり判定用関数
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Enemy")
+        {
+            //当たったオブジェクトのEnemyスクリプトを
+            //呼び出してDamage関数を実行させる
+            other.GetComponent<Enemy>().Damage();
+            Destroy(this.gameObject);
+        }
+    }
 }
